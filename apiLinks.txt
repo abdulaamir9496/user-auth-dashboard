@@ -1,0 +1,127 @@
+Use a tool like Postman to test your endpoints:
+
+POST to 
+http://localhost:5000/api/users/register 
+with a JSON body containing name, email, and password
+
+POST to 
+http://localhost:5000/api/users/login 
+with email and password
+Check that users are being stored in your MongoDB database
+
+For testing your API endpoints in Postman, you'll need to use the following formats:
+
+### For Registration (POST to http://localhost:5000/api/users/register)
+
+In the Postman request:
+1. Select "POST" as the method
+2. Enter URL: `http://localhost:5000/api/users/register`
+3. Go to "Body" tab
+4. Select "raw" and choose "JSON" from the dropdown
+5. Enter this JSON:
+
+```json
+{
+    "name": "Test User",
+    "email": "testuser@example.com",
+    "password": "password123"
+}
+```
+
+### For Login (POST to http://localhost:5000/api/users/login)
+
+In the Postman request:
+1. Select "POST" as the method
+2. Enter URL: `http://localhost:5000/api/users/login`
+3. Go to "Body" tab
+4. Select "raw" and choose "JSON" from the dropdown
+5. Enter this JSON:
+
+```json
+{
+    "email": "testuser@example.com",
+    "password": "password123"
+}
+```
+
+### For Update User (PUT to http://localhost:5000/api/users/:id)
+
+1. Select "PUT" as the method
+2. Enter URL: `http://localhost:5000/api/users/user_id_here` (replace user_id_here with the actual MongoDB _id from registration response)
+3. Go to "Headers" tab and add:
+   - Key: `Authorization`
+   - Value: `Bearer your_jwt_token_here` (use the token received from login response)
+4. Go to "Body" tab
+5. Select "raw" and choose "JSON" from the dropdown
+6. Enter the fields you want to update:
+
+```json
+{
+    "name": "Updated Name"
+}
+```
+
+### For Delete User (DELETE to http://localhost:5000/api/users/:id)
+
+1. Select "DELETE" as the method
+2. Enter URL: `http://localhost:5000/api/users/user_id_here` (replace user_id_here with the actual MongoDB _id)
+3. Go to "Headers" tab and add:
+   - Key: `Authorization`
+   - Value: `Bearer your_jwt_token_here` (use the token received from login response)
+
+Make sure your MongoDB server is running and your Node.js server is started before testing these endpoints in Postman.
+
+**********************************
+
+{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "password": "$2b$10$E.I2G2pvGJZK6WyvObb5muLG/7YrChcpFKRsKJ3izio4x7ABFcJ1S",
+    "_id": "67ffa7be671f00af8e33af4e",
+    "__v": 0
+}
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmZhN2JlNjcxZjAwYWY4ZTMzYWY0ZSIsImlhdCI6MTc0NDgwNzkwOH0.9550f_EcnBYV5E38BEoj51IHmrYNF5FPSwB_LxWQ26k",
+    "user": {
+        "_id": "67ffa7be671f00af8e33af4e",
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "password": "$2b$10$E.I2G2pvGJZK6WyvObb5muLG/7YrChcpFKRsKJ3izio4x7ABFcJ1S",
+        "__v": 0
+    }
+}
+
+JWT Tokens: 
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmZhNWQzNjcxZjAwYWY4ZTMzYWYzZSIsImlhdCI6MTc0NDgwNzUyMn0.B1FlYroff_WzNnzTyZu8Idukosl7K5decMc  3TsR_puc",
+    "user": {
+        "_id": "67ffa5d3671f00af8e33af3e",
+        "name": "Test User",
+        "email": "testuser@example.com",
+        "password": "$2b$10$hbiQ5UdK3LuC4caj.k/3KO7Xfry0.xfXK450u9HKUoWk5rdMtFCmy",
+        "__v": 0
+    }
+}
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmZhNWRlNjcxZjAwYWY4ZTMzYWY0MSIsImlhdCI6MTc0NDgwNzU2OX0.y8dmS4VjVSn3ql6Xqj2n_n2lgNLlOfgI9tMves8NFAE",
+    "user": {
+        "_id": "67ffa5de671f00af8e33af41",
+        "name": "Test User 1",
+        "email": "testuser1@example.com",
+        "password": "$2b$10$hGdsFV690Mh3WqXVAdR/ZOcoJBCQz0Ms947ZG7JQkRrOSaBYBuixq",
+        "__v": 0
+    }
+}
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmZhNWU2NjcxZjAwYWY4ZTMzYWY0NCIsImlhdCI6MTc0NDgwNzU4NX0.uHJ0Nc12gQqLY1ybGL5YRm63rc2teR5n0IZpBiK7_bQ",
+    "user": {
+        "_id": "67ffa5e6671f00af8e33af44",
+        "name": "Test User 2",
+        "email": "testuser2@example.com",
+        "password": "$2b$10$RafpvWxsg4UpPqkdwY78Vei1vKHdgAiFysmIV6bxBauMl5RYRvcqO",
+        "__v": 0
+    }
+}
